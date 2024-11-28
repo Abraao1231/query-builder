@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ColumnSelectionProvider } from "@/context/queryContext";
+import ThemeToggleButton from "./components/ToggleButtonTheme";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,12 +26,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen dark:bg-gray-800 dark:text-gray-100`}
       >
-        {children}
+        <ColumnSelectionProvider>
+        <div className="w-full h-[10vh] flex justify-between px-8 py-2">
+          <h1 className="text-2xl font-bold mb-4">Query Builder</h1>
+          <ThemeToggleButton />
+        </div>
+        <div className="  h-[90vh]  ">
+          {children}
+        </div>
+      
+        </ColumnSelectionProvider>
+
       </body>
     </html>
+
   );
 }

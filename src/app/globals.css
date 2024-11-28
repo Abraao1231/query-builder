@@ -2,20 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.query-builder-container {
+    @apply bg-white h-[300px] overflow-y-auto text-gray-900 p-2 rounded-lg border border-gray-300 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700 w-full; 
   }
+.query-builder {
+    @apply bg-white text-gray-900 rounded-lg border border-gray-300 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700; 
+  }
+  
+  /* Regras */
+  .rule {
+    @apply mb-4 bg-gray-100 p-2 flex rounded-md shadow-sm dark:bg-gray-800  justify-between;  
+  }
+  .rule--body {
+     @apply flex flex-row  justify-normal;
+  } 
+  .group--conjunctions span {
+    display: none;
+  }
+  .qb-drag-handler  {
+    display: none;
+  }
+  /* Corpo das regras */
+  .rule--body {
+    @apply flex items-center gap-4;
+  }
+  input {
+    @apply dark:text-gray-950
+  }
+  /* Selects (Field, Operator, Value) */
+  .rule select {
+    @apply bg-gray-50 text-gray-900 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600 dark:focus:ring-blue-400;
+  }
+  
+  /* Botões */
+  .group--actions button {
+    @apply bg-gray-200 text-gray-900 px-2 py-1 rounded border  border-gray-300 hover:bg-gray-300 transition-colors dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600 dark:hover:bg-gray-700;
+  }
+  .rule--header {
+    @apply flex items-center justify-between border-none relative right-0;
+  }
+  .rule--header button{
+    @apply p-1 border-none px-3 font-semibold;
+  }
+  
+  .rule--widget  {
+    @apply flex items-center gap-2;
+  }
+  .rule--widget input {
+    @apply dark:bg-gray-700 px-2 py-[2px] rounded border dark:text-gray-300 border-gray-300 dark:border-gray-600;
+  }
+
+  /* Botões específicos: Add Rule, Add Group */
+  .qb-add-rule .btn,
+  .qb-add-group .btn {
+    @apply bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-500 transition-colors dark:bg-blue-500 dark:hover:bg-blue-400;
+  }
+  
+  /* Botão de remover (Remove Rule/Group) */
+  .qb-remove .btn {
+    @apply bg-red-600 text-white px-3 py-1 rounded hover:bg-red-500 transition-colors dark:bg-red-500 dark:hover:bg-red-400;
+  }
+  
+  /* Grupos */
+  .group {
+    @apply border border-gray-300 p-4 rounded-lg bg-gray-100 dark:border-gray-600 dark:bg-gray-800;
+  }
+  
+  /* Ações do grupo */
+  .group .group--actions {
+    @apply flex gap-2 mt-2;
+  }
+  
+  /* Estilos gerais para navegadores baseados em Webkit */
+::-webkit-scrollbar {
+  width: 10px; /* Largura da barra vertical */
+  height: 10px; /* Altura da barra horizontal */
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+::-webkit-scrollbar-track {
+  @apply bg-transparent; /* Cor do fundo da trilha */
+  border-radius: 10px; /* Borda arredondada */
 }
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-500; /* Cor da barra de rolagem */
+  border-radius: 8px; /* Borda arredondada */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor ao passar o mouse */
+}
+
+/* Suporte para Firefox */
